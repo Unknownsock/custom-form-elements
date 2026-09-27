@@ -1,0 +1,62 @@
+@use '../mixins' as *;
+
+.cfe-file {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 0.75em;
+	box-sizing: border-box;
+	max-width: 100%;
+	padding: 0.375em;
+	background: var(--cfe-background);
+	border: 1px solid var(--cfe-border);
+	border-radius: var(--cfe-radius);
+
+	&:has(.cfe-file__input:focus-visible) {
+		@include focus-ring;
+	}
+
+	&:has(.cfe-file__input[aria-invalid="true"]) {
+		border-color: var(--cfe-error);
+	}
+
+	&.is-disabled {
+		opacity: 0.5;
+	}
+}
+
+// The real input sits invisibly on top, so clicks, drag-and-drop and keyboard all hit it directly.
+.cfe-file__input {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	cursor: pointer;
+
+	&:disabled {
+		cursor: not-allowed;
+	}
+}
+
+.cfe-file__button {
+	flex: none;
+	padding: 0.5em 1em;
+	font-weight: 600;
+	color: var(--cfe-accent-contrast);
+	background: var(--cfe-accent);
+	border-radius: calc(var(--cfe-radius) - 2px);
+}
+
+.cfe-file__name {
+	min-width: 0;
+	overflow: hidden;
+	color: var(--cfe-muted);
+	white-space: nowrap;
+	text-overflow: ellipsis;
+
+	.cfe-file.has-file & {
+		color: var(--cfe-text);
+	}
+}

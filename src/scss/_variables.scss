@@ -1,0 +1,13 @@
+// Override at build time:  @use 'custom-form-elements/src/scss/main' with ($accent: #0055ff);
+// or at runtime:           :root { --cfe-accent: #0055ff; }
+$accent: #f14902 !default;
+$accent-contrast: #fff !default;
+$text: #1d1d1f !default;
+$muted: #6e6e73 !default;
+$border: #c7c7cc !default;
+$background: #fff !default;
+$error: #d63638 !default;
+$radius: 6px !default;
+$control-size: 1.25em !default;
+$field-padding: 0.625em 0.875em !default;
+$transition: 150ms ease !default;

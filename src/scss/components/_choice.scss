@@ -1,0 +1,92 @@
+@use '../mixins' as *;
+
+// State comes from the real input, so resets and plugin JS (e.g. CF7 "exclusive" checkboxes)
+// can't leave it stale. Covers both wrapping labels and GF/WPForms-style adjacent labels.
+@mixin when-input($state) {
+	.cfe-choice:has(.cfe-choice__input#{$state}),
+	.cfe-choice__input#{$state} + .cfe-choice {
+		@content;
+	}
+}
+
+.cfe-choice {
+	position: relative;
+	display: inline-flex;
+	align-items: flex-start;
+	gap: 0.6em;
+	margin-inline-end: 1em;
+	cursor: pointer;
+}
+
+.cfe-choice__input {
+	@include visually-hidden;
+}
+
+.cfe-choice__indicator {
+	flex: none;
+	display: inline-grid;
+	place-content: center;
+	box-sizing: border-box;
+	width: var(--cfe-control-size);
+	height: var(--cfe-control-size);
+	// Centre on the first line of text rather than the whole (possibly wrapped) label.
+	margin-top: calc((1lh - var(--cfe-control-size)) / 2);
+	background: var(--cfe-background);
+	border: 2px solid var(--cfe-border);
+	transition: background-color var(--cfe-transition), border-color var(--cfe-transition);
+
+	&::after {
+		content: '';
+		opacity: 0;
+		transition: opacity var(--cfe-transition);
+	}
+}
+
+.cfe-choice--checkbox .cfe-choice__indicator {
+	border-radius: calc(var(--cfe-radius) / 2);
+
+	&::after {
+		width: 0.3em;
+		height: 0.6em;
+		margin-top: -0.15em;
+		border: solid var(--cfe-accent-contrast);
+		border-width: 0 2px 2px 0;
+		transform: rotate(45deg);
+	}
+}
+
+.cfe-choice--radio .cfe-choice__indicator {
+	border-radius: 50%;
+
+	&::after {
+		width: 0.5em;
+		height: 0.5em;
+		background: var(--cfe-accent);
+		border-radius: 50%;
+	}
+}
+
+@include when-input(':checked') {
+	.cfe-choice__indicator {
+		border-color: var(--cfe-accent);
+
+		&::after {
+			opacity: 1;
+		}
+	}
+
+	&.cfe-choice--checkbox .cfe-choice__indicator {
+		background: var(--cfe-accent);
+	}
+}
+
+@include when-input(':focus-visible') {
+	.cfe-choice__indicator {
+		@include focus-ring;
+	}
+}
+
+@include when-input(':disabled') {
+	opacity: 0.5;
+	cursor: not-allowed;
+}

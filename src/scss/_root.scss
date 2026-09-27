@@ -1,0 +1,15 @@
+@use 'variables' as v;
+
+:root {
+	--cfe-accent: #{v.$accent};
+	--cfe-accent-contrast: #{v.$accent-contrast};
+	--cfe-text: #{v.$text};
+	--cfe-muted: #{v.$muted};
+	--cfe-border: #{v.$border};
+	--cfe-background: #{v.$background};
+	--cfe-error: #{v.$error};
+	--cfe-radius: #{v.$radius};
+	--cfe-control-size: #{v.$control-size};
+	--cfe-field-padding: #{v.$field-padding};
+	--cfe-transition: #{v.$transition};
+}

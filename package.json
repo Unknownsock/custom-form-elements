@@ -1,0 +1,39 @@
+{
+	"name": "custom-form-elements",
+	"version": "0.1.0",
+	"description": "Custom-styled checkboxes, radios, selects and file inputs that work with the markup from popular form plugins (Contact Form 7, Gravity Forms, WPForms, Fluent Forms).",
+	"private": true,
+	"main": "dist/custom-form-elements.min.js",
+	"style": "dist/custom-form-elements.min.css",
+	"sass": "src/scss/main.scss",
+	"scripts": {
+		"build": "webpack",
+		"watch": "webpack --mode development --watch",
+		"serve:test": "browser-sync start --server --files \"dist/*,test/*\" --startPath /test/ --port 8082 --no-notify --no-ui",
+		"dev": "concurrently -n webpack,server -c blue,green \"npm:watch\" \"npm:serve:test\""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Unknownsock/custom-form-elements.git"
+	},
+	"browserslist": [
+		"defaults"
+	],
+	"devDependencies": {
+		"@babel/core": "^7.29.7",
+		"@babel/preset-env": "^7.29.7",
+		"autoprefixer": "^10.6.1",
+		"babel-loader": "^10.1.1",
+		"browser-sync": "^3.0.4",
+		"concurrently": "^10.0.5",
+		"css-loader": "^7.1.5",
+		"cssnano": "^8.0.10",
+		"mini-css-extract-plugin": "^2.10.2",
+		"postcss": "^8.5.28",
+		"postcss-loader": "^8.2.1",
+		"sass": "^1.105.0",
+		"sass-loader": "^17.0.1",
+		"webpack": "^5.111.1",
+		"webpack-cli": "^7.2.3"
+	}
+}

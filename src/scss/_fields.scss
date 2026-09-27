@@ -1,0 +1,60 @@
+@use 'mixins' as *;
+
+// Zero specificity (:where) so theme and plugin CSS always win without !important.
+:where(
+	input:not([type="checkbox"], [type="radio"], [type="file"], [type="hidden"], [type="submit"], [type="button"], [type="reset"], [type="image"], [type="range"], [type="color"]),
+	textarea
+) {
+	box-sizing: border-box;
+	max-width: 100%;
+	padding: var(--cfe-field-padding);
+	font: inherit;
+	color: var(--cfe-text);
+	background: var(--cfe-background);
+	border: 1px solid var(--cfe-border);
+	border-radius: var(--cfe-radius);
+	transition: border-color var(--cfe-transition), box-shadow var(--cfe-transition);
+
+	&::placeholder {
+		color: var(--cfe-muted);
+	}
+
+	&:focus-visible {
+		outline: none;
+		border-color: var(--cfe-accent);
+		box-shadow: 0 0 0 3px color-mix(in srgb, var(--cfe-accent) 25%, transparent);
+	}
+
+	&:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+
+	&[aria-invalid="true"] {
+		border-color: var(--cfe-error);
+	}
+}
+
+:where(button[type="submit"], input[type="submit"]) {
+	padding: 0.75em 1.5em;
+	font: inherit;
+	font-weight: 600;
+	color: var(--cfe-accent-contrast);
+	background: var(--cfe-accent);
+	border: 0;
+	border-radius: var(--cfe-radius);
+	cursor: pointer;
+
+	&:hover {
+		filter: brightness(0.92);
+	}
+
+	&:focus-visible {
+		@include focus-ring;
+	}
+
+	&:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+}
