@@ -91,3 +91,7 @@ npm run build   # production build to dist/
 - Changing a select's value from JS without firing `change` won't update the custom display.
 - Adjacent-label markup (`<input id><label for>`) must have the label immediately after the input, as Gravity Forms and WPForms do.
 - WPForms' "modern" dropdowns and drag-and-drop uploader, and Fluent Forms' uploader, bring their own UI. Leave those alone with `ignore` (Fluent's is ignored by default).
+
+## License
+
+[MIT](LICENSE)

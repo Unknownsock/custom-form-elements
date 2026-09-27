@@ -2,6 +2,7 @@
 	"name": "custom-form-elements",
 	"version": "0.1.0",
 	"description": "Custom-styled checkboxes, radios, selects and file inputs that work with the markup from popular form plugins (Contact Form 7, Gravity Forms, WPForms, Fluent Forms).",
+	"license": "MIT",
 	"private": true,
 	"main": "dist/custom-form-elements.min.js",
 	"style": "dist/custom-form-elements.min.css",
